@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.media.MediaView?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.papenhagen.videoplayer.FXMLController">
+   <bottom>
+      <HBox minHeight="25.0" spacing="2.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="play1" mnemonicParsing="false" text="play 1" />
+            <Button fx:id="play2" mnemonicParsing="false" text="play 2" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <MediaView fx:id="mediaView" fitHeight="400.0" fitWidth="600.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
