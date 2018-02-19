@@ -1,5 +1,6 @@
-package eu.papenhagen.videoplay;
+package eu.papenhagen.videoplayer;
 
+import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.application.Platform;
@@ -23,11 +24,11 @@ public class MainApp extends Application {
                 Platform.exit();
                 System.exit(0);
             });
-            stage.setTitle("Klassemliste");
+            stage.setTitle("Player");
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
 
     }
@@ -41,7 +42,6 @@ public class MainApp extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
         launch(args);
     }
 
