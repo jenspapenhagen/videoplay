@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.HBox?>
 
 
-<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="50.0" minWidth="450.0" spacing="2.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.papenhagen.videoplayer.FXMLController">
+<HBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="50.0" minWidth="450.0" spacing="2.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.papenhagen.videoplayer.FXMLController">
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>

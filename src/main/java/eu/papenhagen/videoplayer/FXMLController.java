@@ -19,14 +19,14 @@ public class FXMLController implements Initializable {
 
     @FXML
     private HBox box;
-    
+
     private Scene scene;
-    
+
     private Stage stage;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
         stage = new Stage();
 
         Button play1 = new Button("Play 1");
@@ -49,16 +49,18 @@ public class FXMLController implements Initializable {
 
         Media media = new Media(getClass().getResource(fileLocation).toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.pause();
+        mediaPlayer.setMute(true);
         mediaPlayer.setAutoPlay(true);
-        
+
         MediaView mediaView = new MediaView(mediaPlayer);
         mediaView.setMediaPlayer(mediaPlayer);
 
-        mediaPlayer.play();        
+        mediaPlayer.play();
+        mediaPlayer.setMute(false);
         mediaPlayer.setOnError(() -> System.out.println("Current error: " + mediaPlayer.getError()));
 
         hbox.getChildren().add(mediaView);
-
         scene = new Scene(hbox, 640, 480);
         stage.setScene(scene);
         if (!stage.isShowing()) {
