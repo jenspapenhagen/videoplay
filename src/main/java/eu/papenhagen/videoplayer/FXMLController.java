@@ -1,5 +1,7 @@
 package eu.papenhagen.videoplayer;
 
+import java.io.File;
+import java.io.FileFilter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -10,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -29,17 +32,25 @@ public class FXMLController implements Initializable {
 
         stage = new Stage();
 
-        Button play1 = new Button("Play 1");
-        play1.setOnAction((ActionEvent event) -> {
-            showScreen("test1.mp4");
+        VBox buttonBox = new VBox();
+        buttonBox.setSpacing(5);
+
+        File testDirectory = new File("C://home//");
+        File[] files = testDirectory.listFiles((File pathname) -> {
+            String name = pathname.getName().toLowerCase();
+            return name.endsWith(".mp4") && pathname.isFile();
         });
 
-        Button play2 = new Button("Play 2");
-        play2.setOnAction((ActionEvent event) -> {
-            showScreen("test2.mp4");
-        });
+        for (File file : files) {
+            System.out.println("" + file.getName());
+            Button play = new Button(file.getName());
+            play.setOnAction((ActionEvent event) -> {
+                showScreen(file.getName());
+            });
+            buttonBox.getChildren().add(play);
+        }
 
-        box.getChildren().addAll(play1, play2);
+        box.getChildren().add(buttonBox);
     }
 
     private void showScreen(String fileLocation) {
@@ -47,7 +58,7 @@ public class FXMLController implements Initializable {
         hbox.setPadding(new Insets(10));
         hbox.setAlignment(Pos.CENTER);
 
-        Media media = new Media(getClass().getResource(fileLocation).toExternalForm());
+        Media media = new Media("file:///C://home//" + fileLocation);
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.pause();
         mediaPlayer.setMute(true);
