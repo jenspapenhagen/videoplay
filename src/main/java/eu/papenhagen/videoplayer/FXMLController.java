@@ -11,6 +11,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -73,6 +74,9 @@ public class FXMLController implements Initializable {
 
         hbox.getChildren().add(mediaView);
         scene = new Scene(hbox, 640, 480);
+
+        stage.setTitle(fileLocation);
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/images/icon.png")));
         stage.setScene(scene);
         if (!stage.isShowing()) {
             stage.show();
