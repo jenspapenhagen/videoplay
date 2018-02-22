@@ -1,8 +1,9 @@
 package eu.papenhagen.videoplayer;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,20 +37,21 @@ public class FXMLController implements Initializable {
         VBox buttonBox = new VBox();
         buttonBox.setSpacing(5);
 
-        File testDirectory = new File("C://home//");
-        File[] files = testDirectory.listFiles((File pathname) -> {
+        File[] listFiles = new File("C://home//").listFiles((File pathname) -> {
             String name = pathname.getName().toLowerCase();
             return name.endsWith(".mp4") && pathname.isFile();
         });
+        List<File> files = Arrays.asList(listFiles);
 
-        for (File file : files) {
-            System.out.println("" + file.getName());
-            Button play = new Button(file.getName());
+        files.stream().map((f) -> {
+            Button play = new Button(f.getName());
             play.setOnAction((ActionEvent event) -> {
-                showScreen(file.getName());
+                showScreen(f.getName());
             });
+            return play;
+        }).forEachOrdered((play) -> {
             buttonBox.getChildren().add(play);
-        }
+        });
 
         box.getChildren().add(buttonBox);
     }
